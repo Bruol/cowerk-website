@@ -111,7 +111,7 @@
 		</div>
 		<div class="flex flex-col">
 			<img
-				src="/imgs/overview_kuche.jpg"
+				src="/imgs/overview_kuche.webp"
 				alt="COWERK_5"
 				class="block h-72 w-full border-b-4 border-dark object-cover md:h-[30rem] lg:h-[58vh]"
 			/>
@@ -316,7 +316,7 @@
 			</div>
 		</div>
 		<img
-			src="/imgs/overview_eingang.jpeg"
+			src="/imgs/overview_eingang.webp"
 			alt="COWERK_5 SPACE"
 			class="mx-auto block h-72 w-full max-w-6xl border-4 border-dark object-cover contrast-110 grayscale-[30%] md:h-[30rem] lg:h-[44vh]"
 		/>
@@ -334,58 +334,86 @@
 		>
 			{@html l.raeumeHeading}
 		</h2>
-		<div class="grid grid-cols-1 border-4 border-dark md:grid-cols-2">
-			<div class="border-b-2 border-dark md:border-r-2 md:border-b-2">
+		<div class="space-y-10 md:space-y-14">
+			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[0.36fr_1fr] md:gap-10">
 				<img
-					src="/imgs/schreibtische.jpg"
+					src="/imgs/schreibtische.webp"
 					alt="COWORKING"
-					class="block h-64 w-full border-b-2 border-dark object-cover md:h-72 lg:h-[34vh]"
+					class="block h-auto w-full border-4 border-dark object-cover"
 				/>
-				<div class="p-6">
-					<h3 class="mb-2 text-sm font-bold uppercase">{l.raeumeCoworkTitle}</h3>
-					<p class="text-xs text-muted-warm">
+				<div>
+					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
+						>[A]</span
+					>
+					<h3
+						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
+					>
+						{l.raeumeCoworkTitle}
+					</h3>
+					<p class="max-w-2xl text-base leading-relaxed text-muted-warm md:text-lg">
 						{l.raeumeCoworkDesc}
 					</p>
 				</div>
 			</div>
-			<div class="border-b-2 border-dark md:border-b-2">
-				<img
-					src="/imgs/werkstatt.webp"
-					alt="WERKSTATT"
-					class="block h-64 w-full border-b-2 border-dark object-cover md:h-72 lg:h-[34vh]"
-				/>
-				<div class="p-6">
-					<h3 class="mb-2 text-sm font-bold uppercase">{l.raeumeWerkstattTitle}</h3>
-					<p class="text-xs text-muted-warm">
+			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_0.42fr] md:gap-10">
+				<div class="md:order-1">
+					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
+						>[B]</span
+					>
+					<h3
+						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
+					>
+						{l.raeumeWerkstattTitle}
+					</h3>
+					<p class="max-w-2xl text-base leading-relaxed text-muted-warm md:text-lg">
 						{l.raeumeWerkstattDesc}
 					</p>
 				</div>
-			</div>
-			<div class="border-b-2 border-dark md:border-r-2 md:border-b-0">
 				<img
-					src="/imgs/kuche.jpg"
-					alt="KÜCHE"
-					class="block h-64 w-full border-b-2 border-dark object-cover md:h-72 lg:h-[34vh]"
+					src="/imgs/werkstatt.webp"
+					alt="WERKSTATT"
+					class="block h-auto w-full border-4 border-dark object-cover md:order-2"
 				/>
-				<div class="p-6">
-					<h3 class="mb-2 text-sm font-bold uppercase">{l.raeumeKuecheTitle}</h3>
-					<p class="text-xs text-muted-warm">
+			</div>
+			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[0.42fr_1fr] md:gap-10">
+				<img
+					src="/imgs/kuche.webp"
+					alt="KÜCHE"
+					class="block h-auto w-full border-4 border-dark object-cover"
+				/>
+				<div>
+					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
+						>[C]</span
+					>
+					<h3
+						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
+					>
+						{l.raeumeKuecheTitle}
+					</h3>
+					<p class="max-w-2xl text-base leading-relaxed text-muted-warm md:text-lg">
 						{l.raeumeKuecheDesc}
 					</p>
 				</div>
 			</div>
-			<div>
-				<img
-					src="/imgs/wohnzimmer.jpg"
-					alt="RUHE"
-					class="block h-64 w-full border-b-2 border-dark object-cover md:h-72 lg:h-[34vh]"
-				/>
-				<div class="p-6">
-					<h3 class="mb-2 text-sm font-bold uppercase">{l.raeumeRuheTitle}</h3>
-					<p class="text-xs text-muted-warm">
+			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_0.42fr] md:gap-10">
+				<div class="md:order-1">
+					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
+						>[D]</span
+					>
+					<h3
+						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
+					>
+						{l.raeumeRuheTitle}
+					</h3>
+					<p class="max-w-2xl text-base leading-relaxed text-muted-warm md:text-lg">
 						{l.raeumeRuheDesc}
 					</p>
 				</div>
+				<img
+					src="/imgs/wohnzimmer.webp"
+					alt="RUHE"
+					class="block h-auto w-full border-4 border-dark object-cover md:order-2"
+				/>
 			</div>
 		</div>
 	</section>
@@ -424,7 +452,7 @@
 			</div>
 			<div class="md:mt-20">
 				<img
-					src="/imgs/diskokugel.jpg"
+					src="/imgs/diskokugel.webp"
 					alt="ORGANISATION"
 					class="mx-auto h-[30rem] w-full max-w-md border-4 border-secondary object-cover grayscale-[50%] md:h-[36rem] lg:h-[40rem] lg:max-w-sm"
 				/>
@@ -575,5 +603,9 @@
 			<span>{l.footerLocation}</span>
 			<span>{l.footerTagline}</span>
 		</div>
+		<address class="mt-4 text-xs tracking-widest text-cloud/75 uppercase not-italic">
+			<span class="font-bold text-secondary">{l.footerImpressumTitle}:</span>
+			{l.footerImpressumAddress}
+		</address>
 	</footer>
 </div>

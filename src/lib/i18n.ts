@@ -94,6 +94,8 @@ export interface Translations {
 	kontaktSubmit: string;
 	footerLocation: string;
 	footerTagline: string;
+	footerImpressumTitle: string;
+	footerImpressumAddress: string;
 }
 
 const de: Translations = {
@@ -166,8 +168,7 @@ const de: Translations = {
 	raeumeKuecheDesc:
 		'Gemeinschaftsküche mit vorwiegend veganer und vegetarischer Ernährung — bei uns gibt es kein Fleisch. Wöchentliches Gemüse-Abo, Milchprodukte vom nahegelegenen Hof.',
 	raeumeRuheTitle: 'COMMUNITY & RUHE',
-	raeumeRuheDesc:
-		'Gemütliche Ecke zum Lesen, Pausen und ruhige Momente. Tolle Aussicht inklusive.',
+	raeumeRuheDesc: 'Gemütliche Ecke zum Lesen, Pausen und ruhige Momente. Tolle Aussicht inklusive.',
 
 	orgSectionNum: '004',
 	orgHeading: 'ORGANISATION',
@@ -208,7 +209,9 @@ const de: Translations = {
 	kontaktSubmit: 'SENDEN >>>',
 
 	footerLocation: 'ZÜRICH-ALTSTETTEN',
-	footerTagline: 'GEMEINSCHAFTLICH GEFÜHRT'
+	footerTagline: 'GEMEINSCHAFTLICH GEFÜHRT',
+	footerImpressumTitle: 'IMPRESSUM',
+	footerImpressumAddress: 'Verein cowerk_5 , Geerenweg 2, 8048 Zürich'
 };
 
 const en: Translations = {
@@ -272,14 +275,13 @@ const en: Translations = {
 	raeumeSectionNum: '003',
 	raeumeHeading: 'SPACES &<br />AMENITIES',
 	raeumeCoworkTitle: 'COWORKING AREA',
-	raeumeCoworkDesc:
-		'Work-focused zones for concentrated work. Shared tables and flexible seating.',
+	raeumeCoworkDesc: 'Work-focused zones for concentrated work. Shared tables and flexible seating.',
 	raeumeWerkstattTitle: 'WORKSHOP',
 	raeumeWerkstattDesc:
 		'Woodworking and metalworking tools. Space for hands-on projects and making.',
 	raeumeKuecheTitle: 'KITCHEN & FOOD',
 	raeumeKuecheDesc:
-		'Shared kitchen with primarily vegan and vegetarian food — we don\'t serve meat. Weekly vegetable subscription, dairy from a nearby farm.',
+		"Shared kitchen with primarily vegan and vegetarian food — we don't serve meat. Weekly vegetable subscription, dairy from a nearby farm.",
 	raeumeRuheTitle: 'COMMUNITY & QUIET',
 	raeumeRuheDesc: 'Cozy corner for reading, breaks and quiet moments. Great view included.',
 
@@ -322,7 +324,9 @@ const en: Translations = {
 	kontaktSubmit: 'SEND >>>',
 
 	footerLocation: 'ZURICH-ALTSTETTEN',
-	footerTagline: 'COLLECTIVELY RUN'
+	footerTagline: 'COLLECTIVELY RUN',
+	footerImpressumTitle: 'IMPRESSUM',
+	footerImpressumAddress: 'cowerk_5, Geerenweg 2, 8048 Zurich'
 };
 
 export const translations: Record<Locale, Translations> = { de, en };
