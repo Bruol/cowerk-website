@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
 	import { translations, type Locale } from '$lib/i18n';
 
@@ -23,6 +24,16 @@
 		params.set('lang', target);
 
 		return `${page.url.pathname}?${params.toString()}${page.url.hash}`;
+	};
+
+	const enhanceForm = () => {
+		return async ({
+			update
+		}: {
+			update: (options?: { reset?: boolean; invalidateAll?: boolean }) => Promise<void>;
+		}) => {
+			await update({ reset: false, invalidateAll: false });
+		};
 	};
 </script>
 
@@ -180,7 +191,12 @@
 				</div>
 			</div>
 			<div class="lg:mt-20">
-				<form method="POST" action="?/trial" class="border-4 border-dark bg-surface p-6 md:p-8">
+				<form
+					method="POST"
+					action="?/trial"
+					use:enhance={enhanceForm}
+					class="border-4 border-dark bg-surface p-6 md:p-8"
+				>
 					<div class="mb-6 border-b-2 border-dark pb-3 font-['Archivo_Black',sans-serif] text-2xl">
 						{l.trialFormTitle}
 					</div>
@@ -543,7 +559,12 @@
 				<p class="text-base leading-relaxed">{l.kontaktLocation}</p>
 				<p class="text-sm text-muted-warm">{l.kontaktCta}</p>
 			</div>
-			<form method="POST" action="?/contact" class="border-4 border-dark bg-surface p-6 md:mt-20 md:p-8">
+			<form
+				method="POST"
+				action="?/contact"
+				use:enhance={enhanceForm}
+				class="border-4 border-dark bg-surface p-6 md:mt-20 md:p-8"
+			>
 				<input class="hidden" type="text" name="website" tabindex="-1" autocomplete="off" />
 				<div class="mb-4">
 					<label
