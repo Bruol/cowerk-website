@@ -2,6 +2,14 @@
 	import { page } from '$app/state';
 	import { translations, type Locale } from '$lib/i18n';
 
+	type FormResult = {
+		form?: 'trial' | 'contact';
+		ok?: boolean;
+		message?: string;
+	};
+
+	let { form }: { form?: FormResult } = $props();
+
 	const queryLocale = $derived(page.url.searchParams.get('lang'));
 	const locale = $derived(
 		queryLocale === 'de' || queryLocale === 'en'
@@ -86,9 +94,9 @@
 
 	<!-- Hero -->
 	<section
-		class="grid grid-cols-1 border-b-4 border-dark pt-14 lg:min-h-screen lg:grid-cols-[1.35fr_0.85fr]"
+		class="grid grid-cols-1 border-b-4 border-dark pt-14 xl:min-h-screen xl:grid-cols-[1.35fr_0.85fr]"
 	>
-		<div class="flex flex-col justify-between p-8 md:p-12 lg:border-r-4 lg:border-dark">
+		<div class="flex flex-col justify-between p-8 md:p-12 xl:border-r-4 xl:border-dark">
 			<h1
 				class="m-0 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,7vw,7rem)] leading-[0.95] uppercase"
 			>
@@ -113,7 +121,7 @@
 			<img
 				src="/imgs/overview_kuche.webp"
 				alt="COWERK_5"
-				class="block h-72 w-full border-b-4 border-dark object-cover md:h-[30rem] lg:h-[58vh]"
+				class="block h-72 w-full border-b-4 border-dark object-cover md:h-[30rem] xl:h-[58vh]"
 			/>
 			<div class="border-b-4 border-dark p-6 md:p-10">
 				<p class="m-0 text-sm leading-relaxed">
@@ -172,10 +180,11 @@
 				</div>
 			</div>
 			<div class="lg:mt-20">
-				<form class="border-4 border-dark bg-surface p-6 md:p-8">
+				<form method="POST" action="?/trial" class="border-4 border-dark bg-surface p-6 md:p-8">
 					<div class="mb-6 border-b-2 border-dark pb-3 font-['Archivo_Black',sans-serif] text-2xl">
 						{l.trialFormTitle}
 					</div>
+					<input class="hidden" type="text" name="website" tabindex="-1" autocomplete="off" />
 					<div class="mb-4">
 						<label
 							for="trial-name"
@@ -266,6 +275,11 @@
 						class="mt-2 w-full cursor-pointer border-4 border-secondary bg-secondary px-6 py-4 font-['JetBrains_Mono',monospace] text-xs font-bold text-dark uppercase transition-colors hover:border-dark hover:bg-dark hover:text-cloud"
 						>{l.trialSubmit}</button
 					>
+					{#if form?.form === 'trial' && form.message}
+						<p class={`mt-3 text-center text-xs ${form.ok ? 'text-muted' : 'text-lemonade'}`}>
+							{form.message}
+						</p>
+					{/if}
 					<p class="mt-3 text-center text-xs text-muted">{l.trialConfirm}</p>
 				</form>
 			</div>
@@ -529,7 +543,8 @@
 				<p class="text-base leading-relaxed">{l.kontaktLocation}</p>
 				<p class="text-sm text-muted-warm">{l.kontaktCta}</p>
 			</div>
-			<form class="border-4 border-dark bg-surface p-6 md:mt-20 md:p-8">
+			<form method="POST" action="?/contact" class="border-4 border-dark bg-surface p-6 md:mt-20 md:p-8">
+				<input class="hidden" type="text" name="website" tabindex="-1" autocomplete="off" />
 				<div class="mb-4">
 					<label
 						for="contact-name"
@@ -579,6 +594,11 @@
 					class="w-full cursor-pointer border-4 border-secondary bg-secondary px-6 py-4 font-['JetBrains_Mono',monospace] text-xs font-bold text-dark uppercase transition-colors hover:border-dark hover:bg-dark hover:text-cloud"
 					>{l.kontaktSubmit}</button
 				>
+				{#if form?.form === 'contact' && form.message}
+					<p class={`mt-3 text-center text-xs ${form.ok ? 'text-muted' : 'text-lemonade'}`}>
+						{form.message}
+					</p>
+				{/if}
 			</form>
 		</div>
 	</section>
