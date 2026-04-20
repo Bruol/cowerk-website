@@ -21,6 +21,10 @@
 			}
 		}
 	],
+	"vars": {
+		"SMTP_HOST": "authsmtp.securemail.pro",
+		"SMTP_PORT": "465",
+	},
 	"workers_dev": true,
 	"preview_urls": true
 }
