@@ -172,7 +172,7 @@
 					</div>
 				</div>
 			</div>
-			<div>
+			<div class="lg:mt-20">
 				<form class="border-4 border-dark bg-surface p-6 md:p-8">
 					<div class="mb-6 border-b-2 border-dark pb-3 font-['Archivo_Black',sans-serif] text-2xl">
 						{l.trialFormTitle}
@@ -422,11 +422,13 @@
 					</div>
 				</div>
 			</div>
-			<img
-				src="/imgs/diskokugel.jpg"
-				alt="ORGANISATION"
-				class="mx-auto h-[30rem] w-full max-w-md border-4 border-secondary object-cover grayscale-[50%] md:h-[36rem] lg:h-[40rem] lg:max-w-sm"
-			/>
+			<div class="md:mt-20">
+				<img
+					src="/imgs/diskokugel.jpg"
+					alt="ORGANISATION"
+					class="mx-auto h-[30rem] w-full max-w-md border-4 border-secondary object-cover grayscale-[50%] md:h-[36rem] lg:h-[40rem] lg:max-w-sm"
+				/>
+			</div>
 		</div>
 	</section>
 
@@ -497,22 +499,22 @@
 
 	<!-- Kontakt -->
 	<section id="kontakt" class="border-b-4 border-dark p-8 md:p-12">
-		<div
-			class="-mb-4 font-['Archivo_Black',sans-serif] text-7xl leading-none text-black/5 md:text-8xl"
-		>
-			{l.kontaktSectionNum}
-		</div>
-		<h2
-			class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] uppercase"
-		>
-			{l.kontaktHeading}
-		</h2>
-		<div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
+		<div class="grid grid-cols-1 items-start gap-10 md:grid-cols-2 lg:gap-16">
 			<div>
+				<div
+					class="-mb-4 font-['Archivo_Black',sans-serif] text-7xl leading-none text-black/5 md:text-8xl"
+				>
+					{l.kontaktSectionNum}
+				</div>
+				<h2
+					class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] uppercase"
+				>
+					{l.kontaktHeading}
+				</h2>
 				<p class="text-base leading-relaxed">{l.kontaktLocation}</p>
 				<p class="text-sm text-muted-warm">{l.kontaktCta}</p>
 			</div>
-			<form class="border-4 border-dark bg-surface p-6 md:p-8">
+			<form class="border-4 border-dark bg-surface p-6 md:mt-20 md:p-8">
 				<div class="mb-4">
 					<label
 						for="contact-name"
