@@ -167,7 +167,6 @@
 						<ul class="list-none space-y-1 p-0">
 							<li class="text-sm">--&gt; {l.trialExpect1}</li>
 							<li class="text-sm">--&gt; {l.trialExpect2}</li>
-							<li class="text-sm">--&gt; {l.trialExpect3}</li>
 						</ul>
 					</div>
 				</div>
@@ -342,9 +341,6 @@
 					class="block h-auto w-full border-4 border-dark object-cover"
 				/>
 				<div>
-					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
-						>[A]</span
-					>
 					<h3
 						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
 					>
@@ -357,9 +353,6 @@
 			</div>
 			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_0.42fr] md:gap-10">
 				<div class="md:order-1">
-					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
-						>[B]</span
-					>
 					<h3
 						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
 					>
@@ -382,9 +375,6 @@
 					class="block h-auto w-full border-4 border-dark object-cover"
 				/>
 				<div>
-					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
-						>[C]</span
-					>
 					<h3
 						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
 					>
@@ -397,9 +387,6 @@
 			</div>
 			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_0.42fr] md:gap-10">
 				<div class="md:order-1">
-					<span class="mb-3 block text-xs font-bold tracking-widest text-secondary uppercase"
-						>[D]</span
-					>
 					<h3
 						class="mb-4 font-['Archivo_Black',sans-serif] text-[clamp(2rem,4vw,4rem)] leading-[0.95] uppercase"
 					>

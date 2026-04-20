@@ -30,7 +30,6 @@ export interface Translations {
 	trialExpectTitle: string;
 	trialExpect1: string;
 	trialExpect2: string;
-	trialExpect3: string;
 	trialFormTitle: string;
 	trialLabelName: string;
 	trialLabelEmail: string;
@@ -129,12 +128,11 @@ const de: Translations = {
 	trialGetTitle: '// WAS DU BEKOMMST',
 	trialGet1: 'Ein Schreibtisch / Arbeitsplatz tagsüber',
 	trialGet2: 'Zugang zur Gemeinschaftsküche',
-	trialGet3: 'Mitglieder kennenlernen',
+	trialGet3: 'Grossartige Community',
 	trialGet4: 'Kollaborative, hands-on Kultur',
 	trialExpectTitle: '// WAS WIR ERWARTEN',
 	trialExpect1: 'Respekt für gemeinsame Räume',
-	trialExpect2: 'Bereitschaft, sich vorzustellen',
-	trialExpect3: 'Optional: eine kleine Aufgabe',
+	trialExpect2: 'Beisteuern zur Gemeinschaft',
 	trialFormTitle: 'ANMELDUNG_',
 	trialLabelName: 'NAME *',
 	trialLabelEmail: 'E-MAIL *',
@@ -148,7 +146,7 @@ const de: Translations = {
 	konzeptSectionNum: '002',
 	konzeptHeading: 'WAS DIESER<br />ORT IST',
 	konzeptDescription:
-		'cowerk_5 ist ein Kollektiv von etwa 20 Personen; etwa 12 arbeiten regelmässig vom Space aus. Wir führen den Ort als Verein mit geteilter Verantwortung. Der Space wird von seinen Mitgliedern geprägt: Ideen einbringen, die Infrastruktur verbessern und die Atmosphäre mitgestalten.',
+		'cowerk_5 ist ein Kollektiv von etwa 20 Personen. Wir führen den Ort als Verein mit geteilter Verantwortung. Der Space wird von seinen Mitgliedern geprägt: Ideen einbringen, den Raum verbessern und gemeinsam gestalten. Wir schätzen Nachhaltigkeit und Community.',
 	konzeptValueATitle: 'UMWELTBEWUSSTSEIN',
 	konzeptValueADesc: 'Reparieren, Wiederverwenden, bewusster Konsum als Standard.',
 	konzeptValueBTitle: 'SOLIDARITÄT',
@@ -160,14 +158,14 @@ const de: Translations = {
 	raeumeHeading: 'RÄUME &<br />AUSSTATTUNG',
 	raeumeCoworkTitle: 'COWORKING-BEREICH',
 	raeumeCoworkDesc:
-		'Arbeitsfokussierte Zonen für konzentriertes Arbeiten. Gemeinsame Tische und flexibles Sitzen.',
+		'Arbeitsfokussierte Zonen für konzentriertes Arbeiten. Geteilte Tische und flexibles Sitzen.',
 	raeumeWerkstattTitle: 'WERKSTATT',
 	raeumeWerkstattDesc:
 		'Holz- und Metallbearbeitungswerkzeuge. Platz für Hands-on Projekte und Making.',
 	raeumeKuecheTitle: 'KÜCHE & FOOD',
 	raeumeKuecheDesc:
-		'Gemeinschaftsküche mit vorwiegend veganer und vegetarischer Ernährung — bei uns gibt es kein Fleisch. Wöchentliches Gemüse-Abo, Milchprodukte vom nahegelegenen Hof.',
-	raeumeRuheTitle: 'COMMUNITY & RUHE',
+		'Gemeinschaftsküche mit vorwiegend veganer und vegetarischer Ernährung — bei uns gibts kein Fleisch. Wöchentliches Gemüse- und Milchprodukte-Abo von einem nahegelegenen Hof.',
+	raeumeRuheTitle: 'CHILL SPACE',
 	raeumeRuheDesc: 'Gemütliche Ecke zum Lesen, Pausen und ruhige Momente. Tolle Aussicht inklusive.',
 
 	orgSectionNum: '004',
@@ -176,23 +174,23 @@ const de: Translations = {
 		'Wir sind ein Verein mit regelmässigen monatlichen Treffen. Entscheidungen und Verantwortungen werden geteilt.',
 	orgTask1: 'Gemeinsame Bereiche pflegen',
 	orgTask2: 'Arbeitsgruppen beitreten (Werkwartung, Küche, Anlässe)',
-	orgTask3: 'Skills einbringen / Sessions hosten',
+	orgTask3: 'Skills einbringen / Events hosten',
 
 	eventsSectionNum: '005',
 	eventsHeading: 'COMMUNITY<br />& EVENTS',
 	eventsFreqMonthly: 'MONATLICH',
-	eventsKinoTitle: 'KINOVORFÜHRUNG',
-	eventsKinoDesc: 'Mit "Kultberg" — regelmässiges Filmerlebnis im Space.',
-	eventsFreqRegular: 'REGELMÄSSIG',
+	eventsKinoTitle: 'Cowerk Kino',
+	eventsKinoDesc: 'Regelmässiges Filmerlebnis im Space.',
+	eventsFreqRegular: 'WÖCHENTLICH',
 	eventsWorkshopTitle: 'WORKSHOPS',
 	eventsWorkshopDesc: 'Hands-on Skill-Sharing und Crafting-Sessions.',
-	eventsFreqOccasional: 'GELEGENTLICH',
+	eventsFreqOccasional: 'MONATLICH',
 	eventsMeetingTitle: 'COMMUNITY-TREFFEN',
 	eventsMeetingDesc: 'Austausch, Planung und gemeinsames Gestalten.',
 
 	fitForYouHeading: 'FÜR DICH<br />WENN_',
 	fitForYou1: 'Du eine Community willst, nicht nur einen Schreibtisch',
-	fitForYou2: 'Du umweltbewusst arbeitest und makest',
+	fitForYou2: 'Du Nachhaltigkeit schätzt',
 	fitForYou3: 'Du geteilte Verantwortung magst',
 	fitForYou4: 'Du Events und Hands-on-Projekte geniesst',
 	fitNotForYouHeading: 'NICHT FÜR<br />DICH WENN_',
@@ -211,7 +209,7 @@ const de: Translations = {
 	footerLocation: 'ZÜRICH-ALTSTETTEN',
 	footerTagline: 'GEMEINSCHAFTLICH GEFÜHRT',
 	footerImpressumTitle: 'IMPRESSUM',
-	footerImpressumAddress: 'Verein cowerk_5 , Geerenweg 2, 8048 Zürich'
+	footerImpressumAddress: 'cowerk_5, Geerenweg 2, 8048 Zürich'
 };
 
 const en: Translations = {
@@ -245,12 +243,11 @@ const en: Translations = {
 	trialGetTitle: '// WHAT YOU GET',
 	trialGet1: 'A desk / workspace during the day',
 	trialGet2: 'Access to the shared kitchen',
-	trialGet3: 'Meet the members',
+	trialGet3: 'Great Community',
 	trialGet4: 'Collaborative, hands-on culture',
 	trialExpectTitle: '// WHAT WE EXPECT',
 	trialExpect1: 'Respect for shared spaces',
-	trialExpect2: 'Willingness to introduce yourself',
-	trialExpect3: 'Optional: a small task',
+	trialExpect2: 'Contribution to the community',
 	trialFormTitle: 'SIGN UP_',
 	trialLabelName: 'NAME *',
 	trialLabelEmail: 'E-MAIL *',
@@ -264,7 +261,7 @@ const en: Translations = {
 	konzeptSectionNum: '002',
 	konzeptHeading: 'WHAT THIS<br />PLACE IS',
 	konzeptDescription:
-		'cowerk_5 is a collective of about 20 people; roughly 12 work regularly from the space. We run the place as an association with shared responsibility. The space is shaped by its members: bringing ideas, improving infrastructure and co-creating the atmosphere.',
+		'cowerk_5 is a collective of about 20 people. We run the place as an association with shared responsibility. The space is shaped by its members: bringing ideas, improving and co-creating the space. We value Sustainability and Community',
 	konzeptValueATitle: 'SUSTAINABILITY',
 	konzeptValueADesc: 'Repair, reuse, conscious consumption as the standard.',
 	konzeptValueBTitle: 'SOLIDARITY',
@@ -281,8 +278,8 @@ const en: Translations = {
 		'Woodworking and metalworking tools. Space for hands-on projects and making.',
 	raeumeKuecheTitle: 'KITCHEN & FOOD',
 	raeumeKuecheDesc:
-		"Shared kitchen with primarily vegan and vegetarian food — we don't serve meat. Weekly vegetable subscription, dairy from a nearby farm.",
-	raeumeRuheTitle: 'COMMUNITY & QUIET',
+		"Shared kitchen with primarily vegan and vegetarian food — we don't serve meat. Weekly vegetable and dairy subscription, from a nearby farm.",
+	raeumeRuheTitle: 'CHILL SPACE',
 	raeumeRuheDesc: 'Cozy corner for reading, breaks and quiet moments. Great view included.',
 
 	orgSectionNum: '004',
@@ -291,23 +288,23 @@ const en: Translations = {
 		'We are an association with regular monthly meetings. Decisions and responsibilities are shared.',
 	orgTask1: 'Maintain shared areas',
 	orgTask2: 'Join working groups (maintenance, kitchen, events)',
-	orgTask3: 'Contribute skills / host sessions',
+	orgTask3: 'Contribute skills / host events',
 
 	eventsSectionNum: '005',
 	eventsHeading: 'COMMUNITY<br />& EVENTS',
 	eventsFreqMonthly: 'MONTHLY',
-	eventsKinoTitle: 'FILM SCREENING',
-	eventsKinoDesc: 'With "Kultberg" — regular cinema experience in the space.',
-	eventsFreqRegular: 'REGULARLY',
+	eventsKinoTitle: 'Cowerk Kino',
+	eventsKinoDesc: 'regular cinema experience in the space.',
+	eventsFreqRegular: 'Weekly',
 	eventsWorkshopTitle: 'WORKSHOPS',
 	eventsWorkshopDesc: 'Hands-on skill-sharing and crafting sessions.',
-	eventsFreqOccasional: 'OCCASIONALLY',
+	eventsFreqOccasional: 'MONTHLY',
 	eventsMeetingTitle: 'COMMUNITY MEETINGS',
 	eventsMeetingDesc: 'Exchange, planning and collective shaping.',
 
 	fitForYouHeading: 'FOR YOU<br />IF_',
 	fitForYou1: 'You want a community, not just a desk',
-	fitForYou2: 'You work and make sustainably',
+	fitForYou2: 'You value sustainability',
 	fitForYou3: 'You like shared responsibility',
 	fitForYou4: 'You enjoy events and hands-on projects',
 	fitNotForYouHeading: 'NOT FOR<br />YOU IF_',
