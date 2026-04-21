@@ -149,7 +149,7 @@ async function submitForm({
 	try {
 		await sendMail({ ...config, to: email }, {
 			subject: 'Thank you for your message',
-			text: "Thank you for sending us an email. We've received your request. \n Cheers, \n cowerk_5"
+			text: "Thank you for sending us an email. We've received your request. \nCheers, \ncowerk_5"
 		});
 	} catch (error) {
 		console.error('Failed to send confirmation email', error);
