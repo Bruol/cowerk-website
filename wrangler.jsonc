@@ -11,6 +11,16 @@
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
+	"routes": [
+		{
+			"pattern": "co-werk5.ch",
+			"custom_domain": true
+		},
+		{
+			"pattern": "www.co-werk5.ch",
+			"custom_domain": true
+		}
+	],
 	"ratelimits": [
 		{
 			"name": "FORM_RATE_LIMITER",
