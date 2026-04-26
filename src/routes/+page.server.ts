@@ -107,7 +107,7 @@ async function submitForm({
 
 		await sendMail(config, {
 			replyTo: email,
-			subject: `COWERK_5 Probewoche: ${name}`,
+			subject: `co_werk5 Probewoche: ${name}`,
 			text: formatLines([
 				['Formular', 'Probewoche'],
 				['Name', name],
@@ -133,7 +133,7 @@ async function submitForm({
 
 		await sendMail(config, {
 			replyTo: email,
-			subject: `COWERK_5 Kontakt: ${name}`,
+			subject: `co_werk5 Kontakt: ${name}`,
 			text: formatLines([
 				['Formular', 'Kontakt'],
 				['Name', name],
@@ -149,7 +149,7 @@ async function submitForm({
 	try {
 		await sendMail({ ...config, to: email }, {
 			subject: 'Thank you for your message',
-			text: "Thank you for sending us an email. We've received your request. \nCheers, \ncowerk_5"
+			text: "Thank you for sending us an email. We've received your request. \nCheers, \nco_werk5"
 		});
 	} catch (error) {
 		console.error('Failed to send confirmation email', error);

@@ -63,7 +63,7 @@ function buildMessage(config: SmtpConfig, message: MailMessage) {
 		replyTo ? `Reply-To: ${replyTo}` : undefined,
 		`Subject: ${subject}`,
 		`Date: ${now.toUTCString()}`,
-		`Message-ID: <${crypto.randomUUID()}@cowerk5.local>`,
+		`Message-ID: <${crypto.randomUUID()}@co-werk5.local>`,
 		'MIME-Version: 1.0',
 		'Content-Type: text/plain; charset=UTF-8',
 		'Content-Transfer-Encoding: 8bit'
@@ -148,12 +148,12 @@ export async function sendMail(config: SmtpConfig, message: MailMessage) {
 	const to = normalizeAddress(config.to);
 
 	await session.readResponse([220]);
-	await session.command('EHLO cowerk5.local', [250]);
+	await session.command('EHLO co-werk5.local', [250]);
 
 	if (port === 587) {
 		await session.command('STARTTLS', [220]);
 		await session.startTls();
-		await session.command('EHLO cowerk5.local', [250]);
+		await session.command('EHLO co-werk5.local', [250]);
 	}
 
 	await session.command('AUTH LOGIN', [334]);

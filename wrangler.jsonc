@@ -1,6 +1,6 @@
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "cowerk-website",
+	"name": "co-werk5-website",
 	"compatibility_date": "2026-02-15",
 	"compatibility_flags": [
 		"nodejs_als",

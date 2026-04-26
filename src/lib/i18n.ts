@@ -98,7 +98,7 @@ export interface Translations {
 }
 
 const de: Translations = {
-	title: 'COWERK_5 // ZÜRICH',
+	title: 'CO_WERK5 // ZÜRICH',
 	metaDescription: 'Kollektiver Coworking-Space Zürich-Altstetten',
 
 	navKonzept: '[KONZEPT]',
@@ -117,7 +117,7 @@ const de: Translations = {
 	heroTypLabel: 'TYP:',
 	heroTypValue: 'VEREIN / KOLLEKTIV',
 	heroDescription:
-		'cowerk_5 ist ein gemeinschaftlich geführter Coworking-Space — fokussiertes Arbeiten, geteilte Infrastruktur und eine starke Kultur gegenseitiger Unterstützung und Nachhaltigkeit.',
+		'co_werk5 ist ein gemeinschaftlich geführter Coworking-Space — fokussiertes Arbeiten, geteilte Infrastruktur und eine starke Kultur gegenseitiger Unterstützung und Nachhaltigkeit.',
 	heroCta: 'KOSTENLOSE PROBEWOCHE >>>',
 	heroContact: 'KONTAKT',
 
@@ -146,7 +146,7 @@ const de: Translations = {
 	konzeptSectionNum: '002',
 	konzeptHeading: 'WAS DIESER<br />ORT IST',
 	konzeptDescription:
-		'cowerk_5 ist ein Kollektiv von etwa 20 Personen. Wir führen den Ort als Verein mit geteilter Verantwortung. Der Space wird von seinen Mitgliedern geprägt: Ideen einbringen, den Raum verbessern und gemeinsam gestalten. Wir schätzen Nachhaltigkeit und Community.',
+		'co_werk5 ist ein Kollektiv von etwa 20 Personen. Wir führen den Ort als Verein mit geteilter Verantwortung. Der Space wird von seinen Mitgliedern geprägt: Ideen einbringen, den Raum verbessern und gemeinsam gestalten. Wir schätzen Nachhaltigkeit und Community.',
 	konzeptValueATitle: 'UMWELTBEWUSSTSEIN',
 	konzeptValueADesc: 'Reparieren, Wiederverwenden, bewusster Konsum als Standard.',
 	konzeptValueBTitle: 'SOLIDARITÄT',
@@ -179,7 +179,7 @@ const de: Translations = {
 	eventsSectionNum: '005',
 	eventsHeading: 'COMMUNITY<br />& EVENTS',
 	eventsFreqMonthly: 'MONATLICH',
-	eventsKinoTitle: 'Cowerk Kino',
+	eventsKinoTitle: 'co_werk5 Kino',
 	eventsKinoDesc: 'Regelmässiges Filmerlebnis im Space.',
 	eventsFreqRegular: 'WÖCHENTLICH',
 	eventsWorkshopTitle: 'WORKSHOPS',
@@ -209,11 +209,11 @@ const de: Translations = {
 	footerLocation: 'ZÜRICH-ALTSTETTEN',
 	footerTagline: 'GEMEINSCHAFTLICH GEFÜHRT',
 	footerImpressumTitle: 'IMPRESSUM',
-	footerImpressumAddress: 'cowerk_5, Geerenweg 2, 8048 Zürich'
+	footerImpressumAddress: 'co_werk5, Geerenweg 2, 8048 Zürich'
 };
 
 const en: Translations = {
-	title: 'COWERK_5 // ZURICH',
+	title: 'co_werk5 // ZURICH',
 	metaDescription: 'Collective coworking space in Zurich-Altstetten',
 
 	navKonzept: '[CONCEPT]',
@@ -232,7 +232,7 @@ const en: Translations = {
 	heroTypLabel: 'TYPE:',
 	heroTypValue: 'ASSOCIATION / COLLECTIVE',
 	heroDescription:
-		'cowerk_5 is a collectively run coworking space — focused work, shared infrastructure and a strong culture of mutual support and sustainability.',
+		'co_werk5 is a collectively run coworking space — focused work, shared infrastructure and a strong culture of mutual support and sustainability.',
 	heroCta: 'FREE TRIAL WEEK >>>',
 	heroContact: 'CONTACT',
 
@@ -261,7 +261,7 @@ const en: Translations = {
 	konzeptSectionNum: '002',
 	konzeptHeading: 'WHAT THIS<br />PLACE IS',
 	konzeptDescription:
-		'cowerk_5 is a collective of about 20 people. We run the place as an association with shared responsibility. The space is shaped by its members: bringing ideas, improving and co-creating the space. We value Sustainability and Community',
+		'co_werk5 is a collective of about 20 people. We run the place as an association with shared responsibility. The space is shaped by its members: bringing ideas, improving and co-creating the space. We value Sustainability and Community',
 	konzeptValueATitle: 'SUSTAINABILITY',
 	konzeptValueADesc: 'Repair, reuse, conscious consumption as the standard.',
 	konzeptValueBTitle: 'SOLIDARITY',
@@ -293,7 +293,7 @@ const en: Translations = {
 	eventsSectionNum: '005',
 	eventsHeading: 'COMMUNITY<br />& EVENTS',
 	eventsFreqMonthly: 'MONTHLY',
-	eventsKinoTitle: 'Cowerk Kino',
+	eventsKinoTitle: 'co_werk5 Kino',
 	eventsKinoDesc: 'regular cinema experience in the space.',
 	eventsFreqRegular: 'Weekly',
 	eventsWorkshopTitle: 'WORKSHOPS',
@@ -323,7 +323,7 @@ const en: Translations = {
 	footerLocation: 'ZURICH-ALTSTETTEN',
 	footerTagline: 'COLLECTIVELY RUN',
 	footerImpressumTitle: 'IMPRESSUM',
-	footerImpressumAddress: 'cowerk_5, Geerenweg 2, 8048 Zurich'
+	footerImpressumAddress: 'co_werk5, Geerenweg 2, 8048 Zurich'
 };
 
 export const translations: Record<Locale, Translations> = { de, en };

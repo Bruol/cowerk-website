@@ -57,7 +57,7 @@
 		class="fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b-4 border-secondary bg-dark px-5 py-3 text-cloud md:px-8"
 	>
 		<div class="font-['Archivo_Black',sans-serif] text-xl">
-			COWERK<span class="text-secondary">_5</span>
+			co_<span class="text-secondary">werk5</span>
 		</div>
 		<div class="flex items-center gap-4">
 			<div class="hidden items-center gap-6 md:flex">
@@ -131,7 +131,7 @@
 		<div class="flex flex-col">
 			<img
 				src="/imgs/overview_kuche.webp"
-				alt="COWERK_5"
+				alt="co_werk5"
 				class="block h-72 w-full border-b-4 border-dark object-cover md:h-[30rem] xl:h-[58vh]"
 			/>
 			<div class="border-b-4 border-dark p-6 md:p-10">
@@ -346,7 +346,7 @@
 		</div>
 		<img
 			src="/imgs/overview_eingang.webp"
-			alt="COWERK_5 SPACE"
+			alt="co_werk5 SPACE"
 			class="mx-auto block h-72 w-full max-w-6xl border-4 border-dark object-cover contrast-110 grayscale-[30%] md:h-[30rem] lg:h-[44vh]"
 		/>
 	</section>
@@ -627,7 +627,7 @@
 	<!-- Footer -->
 	<footer class="border-t-4 border-secondary bg-dark px-5 py-6 text-cloud md:px-8">
 		<div class="flex flex-wrap justify-between gap-4 text-xs tracking-widest uppercase">
-			<span>COWERK_5</span>
+			<span>co_werk5</span>
 			<span>{l.footerLocation}</span>
 			<span>{l.footerTagline}</span>
 		</div>
