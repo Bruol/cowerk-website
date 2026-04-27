@@ -40,6 +40,7 @@
 		"wrangler": "^4.63.0"
 	},
 	"dependencies": {
-		"@plausible-analytics/tracker": "^0.4.4"
+		"@plausible-analytics/tracker": "^0.4.4",
+		"cloudflare-smtp": "0.1.0"
 	}
 }

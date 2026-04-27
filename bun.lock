@@ -6,6 +6,7 @@
       "name": "my-app",
       "dependencies": {
         "@plausible-analytics/tracker": "^0.4.4",
+        "cloudflare-smtp": "0.1.0",
       },
       "devDependencies": {
         "@eslint/compat": "^2.0.2",
@@ -359,6 +360,8 @@
     "chokidar": ["chokidar@4.0.3", "", { "dependencies": { "readdirp": "^4.0.1" } }, "sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA=="],
 
     "cliui": ["cliui@8.0.1", "", { "dependencies": { "string-width": "^4.2.0", "strip-ansi": "^6.0.1", "wrap-ansi": "^7.0.0" } }, "sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ=="],
+
+    "cloudflare-smtp": ["cloudflare-smtp@0.1.0", "", {}, "sha512-Jnh4uSLdhJw34AUEa4B5VH6/TX2ZX2eOuThDw3q7w5ww4RXgg+3cU1FazjS6LsQRZt2EPVL8dVH2YafMG1IP5w=="],
 
     "clsx": ["clsx@2.1.1", "", {}, "sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA=="],
 

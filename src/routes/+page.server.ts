@@ -1,5 +1,5 @@
 import { fail, type Actions } from '@sveltejs/kit';
-import { sendMail, type SmtpConfig } from '$lib/server/smtp';
+import { sendMail, type SmtpConfig } from 'cloudflare-smtp';
 
 const MAX_FIELD_LENGTH = 2000;
 
