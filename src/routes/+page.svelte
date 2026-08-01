@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { translations, type Locale } from '$lib/i18n';
 
@@ -9,22 +10,38 @@
 		message?: string;
 	};
 
-	let { form }: { form?: FormResult } = $props();
+	let { form }: { form?: FormResult | null } = $props();
 
-	const queryLocale = $derived(page.url.searchParams.get('lang'));
-	const locale = $derived(
-		queryLocale === 'de' || queryLocale === 'en'
-			? queryLocale
-			: ((page.data.locale as Locale) ?? 'de')
-	);
+	const locale = $derived((page.data.locale as Locale) ?? 'de');
 	const l = $derived(translations[locale]);
-	const nextLocale = $derived((locale === 'de' ? 'en' : 'de') as Locale);
-	const languageHref = (target: Locale) => {
-		const params = new URLSearchParams(page.url.searchParams);
-		params.set('lang', target);
-
-		return `${page.url.pathname}?${params.toString()}${page.url.hash}`;
-	};
+	const canonicalUrl = $derived(
+		locale === 'en' ? 'https://co-werk5.ch/en/' : 'https://co-werk5.ch/'
+	);
+	const structuredData = $derived({
+		'@context': 'https://schema.org',
+		'@type': ['CoworkingSpace', 'LocalBusiness'],
+		'@id': 'https://co-werk5.ch/#organization',
+		name: 'co_werk5',
+		url: 'https://co-werk5.ch/',
+		mainEntityOfPage: canonicalUrl,
+		description: l.metaDescription,
+		image: 'https://co-werk5.ch/imgs/overview_kuche.webp',
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: 'Geerenweg 2',
+			postalCode: '8048',
+			addressLocality: 'Zürich',
+			addressCountry: 'CH'
+		},
+		areaServed: {
+			'@type': 'City',
+			name: 'Zürich'
+		},
+		inLanguage: locale === 'en' ? 'en' : 'de-CH'
+	});
+	const structuredDataMarkup = $derived(
+		`<${'script'} type="application/ld+json">${JSON.stringify(structuredData).replaceAll('<', '\\u003c')}</${'script'}>`
+	);
 
 	const enhanceForm = () => {
 		return async ({
@@ -40,6 +57,12 @@
 <svelte:head>
 	<title>{l.title}</title>
 	<meta name="description" content={l.metaDescription} />
+	<link rel="canonical" href={canonicalUrl} />
+	<link rel="alternate" hreflang="de-CH" href="https://co-werk5.ch/" />
+	<link rel="alternate" hreflang="en" href="https://co-werk5.ch/en/" />
+	<link rel="alternate" hreflang="x-default" href="https://co-werk5.ch/" />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html structuredDataMarkup}
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
@@ -86,9 +109,9 @@
 				>
 			</div>
 			<a
-				href={languageHref(nextLocale)}
+				href={resolve(locale === 'de' ? '/en/' : '/')}
 				class="relative block h-7 w-16 border-2 border-secondary font-['JetBrains_Mono',monospace] text-[0.65rem] font-bold tracking-widest no-underline"
-				aria-label={`Switch language to ${nextLocale === 'de' ? 'German' : 'English'}`}
+				aria-label={`Switch language to ${locale === 'de' ? 'English' : 'German'}`}
 			>
 				<span
 					class={`absolute top-0.5 left-0.5 h-5 w-7 bg-secondary transition-transform duration-300 ease-out ${
@@ -109,9 +132,9 @@
 	>
 		<div class="flex flex-col justify-between p-8 md:p-12 xl:border-r-4 xl:border-dark">
 			<h1
-				class="m-0 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,7vw,7rem)] leading-[0.95] uppercase"
+				class="m-0 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,7vw,7rem)] leading-[0.95] whitespace-pre-line uppercase"
 			>
-				{@html l.heroHeading}
+				{l.heroHeading}
 			</h1>
 			<div class="mt-8">
 				<div class="flex gap-4 border-t border-black/15 py-2 text-xs">
@@ -131,7 +154,11 @@
 		<div class="flex flex-col">
 			<img
 				src="/imgs/overview_kuche.webp"
-				alt="co_werk5"
+				alt={l.imageAltHero}
+				width="1280"
+				height="960"
+				fetchpriority="high"
+				decoding="async"
 				class="block h-72 w-full border-b-4 border-dark object-cover md:h-[30rem] xl:h-[58vh]"
 			/>
 			<div class="border-b-4 border-dark p-6 md:p-10">
@@ -164,9 +191,9 @@
 					{l.trialSectionNum}
 				</div>
 				<h2
-					class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] uppercase"
+					class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] whitespace-pre-line uppercase"
 				>
-					{@html l.trialHeading}
+					{l.trialHeading}
 				</h2>
 				<p class="mb-8 text-base leading-relaxed">
 					{l.trialIntro}
@@ -312,9 +339,9 @@
 					{l.konzeptSectionNum}
 				</div>
 				<h2
-					class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] uppercase"
+					class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] whitespace-pre-line uppercase"
 				>
-					{@html l.konzeptHeading}
+					{l.konzeptHeading}
 				</h2>
 				<p class="text-base leading-[1.7]">
 					{l.konzeptDescription}
@@ -323,21 +350,21 @@
 			<div class="flex flex-col gap-6 md:pt-20">
 				<div class="border-l-4 border-secondary pl-5">
 					<span class="text-xs font-bold text-secondary">[A]</span>
-					<h4 class="mt-1 mb-1 text-sm font-bold uppercase">{l.konzeptValueATitle}</h4>
+					<h3 class="mt-1 mb-1 text-sm font-bold uppercase">{l.konzeptValueATitle}</h3>
 					<p class="m-0 text-xs text-muted-warm">
 						{l.konzeptValueADesc}
 					</p>
 				</div>
 				<div class="border-l-4 border-secondary pl-5">
 					<span class="text-xs font-bold text-secondary">[B]</span>
-					<h4 class="mt-1 mb-1 text-sm font-bold uppercase">{l.konzeptValueBTitle}</h4>
+					<h3 class="mt-1 mb-1 text-sm font-bold uppercase">{l.konzeptValueBTitle}</h3>
 					<p class="m-0 text-xs text-muted-warm">
 						{l.konzeptValueBDesc}
 					</p>
 				</div>
 				<div class="border-l-4 border-secondary pl-5">
 					<span class="text-xs font-bold text-secondary">[C]</span>
-					<h4 class="mt-1 mb-1 text-sm font-bold uppercase">{l.konzeptValueCTitle}</h4>
+					<h3 class="mt-1 mb-1 text-sm font-bold uppercase">{l.konzeptValueCTitle}</h3>
 					<p class="m-0 text-xs text-muted-warm">
 						{l.konzeptValueCDesc}
 					</p>
@@ -346,7 +373,11 @@
 		</div>
 		<img
 			src="/imgs/overview_eingang.webp"
-			alt="co_werk5 SPACE"
+			alt={l.imageAltEntrance}
+			width="1600"
+			height="1200"
+			loading="lazy"
+			decoding="async"
 			class="mx-auto block h-72 w-full max-w-6xl border-4 border-dark object-cover contrast-110 grayscale-[30%] md:h-[30rem] lg:h-[44vh]"
 		/>
 	</section>
@@ -359,15 +390,19 @@
 			{l.raeumeSectionNum}
 		</div>
 		<h2
-			class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] uppercase"
+			class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] whitespace-pre-line uppercase"
 		>
-			{@html l.raeumeHeading}
+			{l.raeumeHeading}
 		</h2>
 		<div class="space-y-10 md:space-y-14">
 			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[0.36fr_1fr] md:gap-10">
 				<img
 					src="/imgs/schreibtische.webp"
-					alt="COWORKING"
+					alt={l.imageAltCoworking}
+					width="1200"
+					height="1600"
+					loading="lazy"
+					decoding="async"
 					class="block h-auto w-full border-4 border-dark object-cover"
 				/>
 				<div>
@@ -394,14 +429,22 @@
 				</div>
 				<img
 					src="/imgs/werkstatt.webp"
-					alt="WERKSTATT"
+					alt={l.imageAltWorkshop}
+					width="1600"
+					height="1200"
+					loading="lazy"
+					decoding="async"
 					class="block h-auto w-full border-4 border-dark object-cover md:order-2"
 				/>
 			</div>
 			<div class="grid grid-cols-1 items-center gap-6 md:grid-cols-[0.42fr_1fr] md:gap-10">
 				<img
 					src="/imgs/kuche.webp"
-					alt="KÜCHE"
+					alt={l.imageAltKitchen}
+					width="1200"
+					height="1600"
+					loading="lazy"
+					decoding="async"
 					class="block h-auto w-full border-4 border-dark object-cover"
 				/>
 				<div>
@@ -428,7 +471,11 @@
 				</div>
 				<img
 					src="/imgs/wohnzimmer.webp"
-					alt="RUHE"
+					alt={l.imageAltChill}
+					width="1200"
+					height="1600"
+					loading="lazy"
+					decoding="async"
 					class="block h-auto w-full border-4 border-dark object-cover md:order-2"
 				/>
 			</div>
@@ -470,7 +517,11 @@
 			<div class="md:mt-20">
 				<img
 					src="/imgs/diskokugel.webp"
-					alt="ORGANISATION"
+					alt={l.imageAltCommunity}
+					width="1200"
+					height="1600"
+					loading="lazy"
+					decoding="async"
 					class="mx-auto h-[30rem] w-full max-w-md border-4 border-secondary object-cover grayscale-[50%] md:h-[36rem] lg:h-[40rem] lg:max-w-sm"
 				/>
 			</div>
@@ -485,9 +536,9 @@
 			{l.eventsSectionNum}
 		</div>
 		<h2
-			class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] uppercase"
+			class="mb-8 font-['Archivo_Black',sans-serif] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.95] whitespace-pre-line uppercase"
 		>
-			{@html l.eventsHeading}
+			{l.eventsHeading}
 		</h2>
 		<div class="grid grid-cols-1 border-4 border-dark md:grid-cols-3">
 			<div class="border-b-2 border-dark p-8 md:border-r-2 md:border-b-0">
@@ -518,9 +569,9 @@
 	<section class="grid grid-cols-1 border-b-4 border-dark md:grid-cols-2">
 		<div class="bg-secondary p-8 text-dark md:p-12">
 			<h2
-				class="mb-6 font-['Archivo_Black',sans-serif] text-[clamp(1.8rem,3vw,3rem)] leading-[0.95] uppercase"
+				class="mb-6 font-['Archivo_Black',sans-serif] text-[clamp(1.8rem,3vw,3rem)] leading-[0.95] whitespace-pre-line uppercase"
 			>
-				{@html l.fitForYouHeading}
+				{l.fitForYouHeading}
 			</h2>
 			<ul class="list-none space-y-2 p-0">
 				<li class="text-sm text-dark/75">--&gt; {l.fitForYou1}</li>
@@ -531,9 +582,9 @@
 		</div>
 		<div class="bg-dark p-8 text-cloud md:p-12">
 			<h2
-				class="mb-6 font-['Archivo_Black',sans-serif] text-[clamp(1.8rem,3vw,3rem)] leading-[0.95] uppercase"
+				class="mb-6 font-['Archivo_Black',sans-serif] text-[clamp(1.8rem,3vw,3rem)] leading-[0.95] whitespace-pre-line uppercase"
 			>
-				{@html l.fitNotForYouHeading}
+				{l.fitNotForYouHeading}
 			</h2>
 			<ul class="list-none space-y-2 p-0">
 				<li class="text-sm text-muted">--&gt; {l.fitNotForYou1}</li>

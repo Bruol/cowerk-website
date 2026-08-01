@@ -91,6 +91,13 @@ export interface Translations {
 	kontaktLabelEmail: string;
 	kontaktLabelMessage: string;
 	kontaktSubmit: string;
+	imageAltHero: string;
+	imageAltEntrance: string;
+	imageAltCoworking: string;
+	imageAltWorkshop: string;
+	imageAltKitchen: string;
+	imageAltChill: string;
+	imageAltCommunity: string;
 	footerLocation: string;
 	footerTagline: string;
 	footerImpressumTitle: string;
@@ -98,8 +105,9 @@ export interface Translations {
 }
 
 const de: Translations = {
-	title: 'CO_WERK5 // ZÜRICH',
-	metaDescription: 'Kollektiver Coworking-Space Zürich-Altstetten',
+	title: 'Coworking Zürich Altstetten | co_werk 5',
+	metaDescription:
+		'Gemeinschaftlich geführter Coworking-Space beim Bahnhof Zürich Altstetten – mit Arbeitsplätzen, Werkstatt, Küche und kostenloser Probewoche.',
 
 	navKonzept: '[KONZEPT]',
 	navRaeume: '[RÄUME]',
@@ -109,7 +117,7 @@ const de: Translations = {
 
 	marquee: 'COWORKING MIT COMMUNITY-HERZSCHLAG ///',
 
-	heroHeading: 'EIN KOLLEKTIVER<br />COWORKING-<br />SPACE IN<br />ZÜRICH-<br />ALTSTETTEN',
+	heroHeading: 'EIN KOLLEKTIVER\nCOWORKING-\nSPACE IN\nZÜRICH-\nALTSTETTEN',
 	heroStatusLabel: 'STATUS:',
 	heroStatusValue: 'AKTIV SEIT ~7 JAHREN',
 	heroOrtLabel: 'ORT:',
@@ -122,7 +130,7 @@ const de: Translations = {
 	heroContact: 'KONTAKT',
 
 	trialSectionNum: '001',
-	trialHeading: 'KOSTENLOSE<br />PROBEWOCHE',
+	trialHeading: 'KOSTENLOSE\nPROBEWOCHE',
 	trialIntro:
 		'Neugierig, ob das dein Ort ist? Komm eine Woche hier arbeiten, lern die Leute kennen und erlebe den Rhythmus des Spaces.',
 	trialGetTitle: '// WAS DU BEKOMMST',
@@ -144,7 +152,7 @@ const de: Translations = {
 	trialConfirm: '// Wir melden uns zur Bestätigung.',
 
 	konzeptSectionNum: '002',
-	konzeptHeading: 'WAS DIESER<br />ORT IST',
+	konzeptHeading: 'WAS DIESER\nORT IST',
 	konzeptDescription:
 		'co_werk5 ist ein Kollektiv von etwa 20 Personen. Wir führen den Ort als Verein mit geteilter Verantwortung. Der Space wird von seinen Mitgliedern geprägt: Ideen einbringen, den Raum verbessern und gemeinsam gestalten. Wir schätzen Nachhaltigkeit und Community.',
 	konzeptValueATitle: 'UMWELTBEWUSSTSEIN',
@@ -155,7 +163,7 @@ const de: Translations = {
 	konzeptValueCDesc: 'Mehr als ein Schreibtisch — ein Ort des Zusammenwirkens.',
 
 	raeumeSectionNum: '003',
-	raeumeHeading: 'RÄUME &<br />AUSSTATTUNG',
+	raeumeHeading: 'RÄUME &\nAUSSTATTUNG',
 	raeumeCoworkTitle: 'COWORKING-BEREICH',
 	raeumeCoworkDesc:
 		'Arbeitsfokussierte Zonen für konzentriertes Arbeiten. Geteilte Tische und flexibles Sitzen.',
@@ -177,7 +185,7 @@ const de: Translations = {
 	orgTask3: 'Skills einbringen / Events hosten',
 
 	eventsSectionNum: '005',
-	eventsHeading: 'COMMUNITY<br />& EVENTS',
+	eventsHeading: 'COMMUNITY\n& EVENTS',
 	eventsFreqMonthly: 'MONATLICH',
 	eventsKinoTitle: 'co_werk5 Kino',
 	eventsKinoDesc: 'Regelmässiges Filmerlebnis im Space.',
@@ -188,12 +196,12 @@ const de: Translations = {
 	eventsMeetingTitle: 'COMMUNITY-TREFFEN',
 	eventsMeetingDesc: 'Austausch, Planung und gemeinsames Gestalten.',
 
-	fitForYouHeading: 'FÜR DICH<br />WENN_',
+	fitForYouHeading: 'FÜR DICH\nWENN_',
 	fitForYou1: 'Du eine Community willst, nicht nur einen Schreibtisch',
 	fitForYou2: 'Du Nachhaltigkeit schätzt',
 	fitForYou3: 'Du geteilte Verantwortung magst',
 	fitForYou4: 'Du Events und Hands-on-Projekte geniesst',
-	fitNotForYouHeading: 'NICHT FÜR<br />DICH WENN_',
+	fitNotForYouHeading: 'NICHT FÜR\nDICH WENN_',
 	fitNotForYou1: 'Du 100% stilles Büroumfeld brauchst',
 	fitNotForYou2: 'Du servicierten Space ohne Community-Verantwortung bevorzugst',
 
@@ -206,6 +214,14 @@ const de: Translations = {
 	kontaktLabelMessage: 'NACHRICHT',
 	kontaktSubmit: 'SENDEN >>>',
 
+	imageAltHero: 'Gemeinschaftsküche und Aufenthaltsbereich im Coworking-Space co_werk5',
+	imageAltEntrance: 'Eingangsbereich des co_werk5 in Zürich Altstetten',
+	imageAltCoworking: 'Gemeinsame Schreibtische im Coworking-Bereich des co_werk5',
+	imageAltWorkshop: 'Werkstatt für Holz- und Metallarbeiten im co_werk5',
+	imageAltKitchen: 'Gemeinschaftsküche im co_werk5',
+	imageAltChill: 'Ruhiger Aufenthaltsraum mit Sitzgelegenheiten im co_werk5',
+	imageAltCommunity: 'Diskokugel im Gemeinschaftsraum des co_werk5',
+
 	footerLocation: 'ZÜRICH-ALTSTETTEN',
 	footerTagline: 'GEMEINSCHAFTLICH GEFÜHRT',
 	footerImpressumTitle: 'IMPRESSUM',
@@ -213,8 +229,9 @@ const de: Translations = {
 };
 
 const en: Translations = {
-	title: 'co_werk5 // ZURICH',
-	metaDescription: 'Collective coworking space in Zurich-Altstetten',
+	title: 'Coworking Space in Zurich Altstetten | co_werk5',
+	metaDescription:
+		'Community-run coworking near Zurich Altstetten station, with desks, a workshop, shared kitchen and a free trial week.',
 
 	navKonzept: '[CONCEPT]',
 	navRaeume: '[SPACES]',
@@ -224,7 +241,7 @@ const en: Translations = {
 
 	marquee: 'COWORKING WITH A COMMUNITY HEARTBEAT ///',
 
-	heroHeading: 'A COLLECTIVE<br />COWORKING<br />SPACE IN<br />ZURICH-<br />ALTSTETTEN',
+	heroHeading: 'A COLLECTIVE\nCOWORKING\nSPACE IN\nZURICH-\nALTSTETTEN',
 	heroStatusLabel: 'STATUS:',
 	heroStatusValue: 'ACTIVE FOR ~7 YEARS',
 	heroOrtLabel: 'LOCATION:',
@@ -237,7 +254,7 @@ const en: Translations = {
 	heroContact: 'CONTACT',
 
 	trialSectionNum: '001',
-	trialHeading: 'FREE<br />TRIAL WEEK',
+	trialHeading: 'FREE\nTRIAL WEEK',
 	trialIntro:
 		'Curious if this is your place? Come work here for a week, meet the people and experience the rhythm of the space.',
 	trialGetTitle: '// WHAT YOU GET',
@@ -259,7 +276,7 @@ const en: Translations = {
 	trialConfirm: '// We will get back to you to confirm.',
 
 	konzeptSectionNum: '002',
-	konzeptHeading: 'WHAT THIS<br />PLACE IS',
+	konzeptHeading: 'WHAT THIS\nPLACE IS',
 	konzeptDescription:
 		'co_werk5 is a collective of about 20 people. We run the place as an association with shared responsibility. The space is shaped by its members: bringing ideas, improving and co-creating the space. We value Sustainability and Community',
 	konzeptValueATitle: 'SUSTAINABILITY',
@@ -270,7 +287,7 @@ const en: Translations = {
 	konzeptValueCDesc: 'More than a desk — a place of collaboration.',
 
 	raeumeSectionNum: '003',
-	raeumeHeading: 'SPACES &<br />AMENITIES',
+	raeumeHeading: 'SPACES &\nAMENITIES',
 	raeumeCoworkTitle: 'COWORKING AREA',
 	raeumeCoworkDesc: 'Work-focused zones for concentrated work. Shared tables and flexible seating.',
 	raeumeWerkstattTitle: 'WORKSHOP',
@@ -291,7 +308,7 @@ const en: Translations = {
 	orgTask3: 'Contribute skills / host events',
 
 	eventsSectionNum: '005',
-	eventsHeading: 'COMMUNITY<br />& EVENTS',
+	eventsHeading: 'COMMUNITY\n& EVENTS',
 	eventsFreqMonthly: 'MONTHLY',
 	eventsKinoTitle: 'co_werk5 Kino',
 	eventsKinoDesc: 'regular cinema experience in the space.',
@@ -302,12 +319,12 @@ const en: Translations = {
 	eventsMeetingTitle: 'COMMUNITY MEETINGS',
 	eventsMeetingDesc: 'Exchange, planning and collective shaping.',
 
-	fitForYouHeading: 'FOR YOU<br />IF_',
+	fitForYouHeading: 'FOR YOU\nIF_',
 	fitForYou1: 'You want a community, not just a desk',
 	fitForYou2: 'You value sustainability',
 	fitForYou3: 'You like shared responsibility',
 	fitForYou4: 'You enjoy events and hands-on projects',
-	fitNotForYouHeading: 'NOT FOR<br />YOU IF_',
+	fitNotForYouHeading: 'NOT FOR\nYOU IF_',
 	fitNotForYou1: 'You need a 100% quiet office environment',
 	fitNotForYou2: 'You prefer a serviced space without community responsibility',
 
@@ -319,6 +336,14 @@ const en: Translations = {
 	kontaktLabelEmail: 'E-MAIL',
 	kontaktLabelMessage: 'MESSAGE',
 	kontaktSubmit: 'SEND >>>',
+
+	imageAltHero: 'Shared kitchen and common area at the co_werk5 coworking space',
+	imageAltEntrance: 'Entrance area of co_werk5 in Zurich Altstetten',
+	imageAltCoworking: 'Shared desks in the co_werk5 coworking area',
+	imageAltWorkshop: 'Wood and metal workshop at co_werk5',
+	imageAltKitchen: 'Shared kitchen at co_werk5',
+	imageAltChill: 'Quiet lounge with seating at co_werk5',
+	imageAltCommunity: 'Disco ball in the co_werk5 community room',
 
 	footerLocation: 'ZURICH-ALTSTETTEN',
 	footerTagline: 'COLLECTIVELY RUN',

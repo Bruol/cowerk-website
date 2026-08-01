@@ -1,37 +1,40 @@
 import type { Handle } from '@sveltejs/kit';
 import type { Locale } from '$lib/i18n';
 
-const SUPPORTED: Locale[] = ['de', 'en'];
-const isSupported = (locale: string | null): locale is Locale =>
-	SUPPORTED.includes(locale as Locale);
+const CANONICAL_HOST = 'co-werk5.ch';
+
+function isProductionHost(hostname: string) {
+	return hostname === CANONICAL_HOST || hostname === `www.${CANONICAL_HOST}`;
+}
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const requested = event.url.searchParams.get('lang');
-	const saved = event.cookies.get('locale') ?? null;
-	const header = event.request.headers.get('accept-language') ?? '';
-	const preferred = header
-		.split(',')
-		.map((part) => {
-			const [lang, q] = part.trim().split(';q=');
-			return { lang: lang.trim().split('-')[0].toLowerCase(), q: q ? parseFloat(q) : 1 };
-		})
-		.sort((a, b) => b.q - a.q)
-		.find((entry) => SUPPORTED.includes(entry.lang as Locale));
+	const requestedLocale = event.url.searchParams.get('lang');
+	const forwardedProtocol = event.request.headers.get('x-forwarded-proto');
+	const requestProtocol = forwardedProtocol ?? event.url.protocol.replace(':', '');
+	const needsHttps = isProductionHost(event.url.hostname) && requestProtocol === 'http';
+	const needsCanonicalHost = event.url.hostname === `www.${CANONICAL_HOST}`;
+	const needsLocaleRedirect = requestedLocale === 'de' || requestedLocale === 'en';
 
-	event.locals.locale = isSupported(requested)
-		? requested
-		: isSupported(saved)
-			? saved
-			: ((preferred?.lang as Locale) ?? 'de');
+	if (needsHttps || needsCanonicalHost || needsLocaleRedirect) {
+		const target = new URL(event.url);
+		target.protocol = 'https:';
+		target.hostname = CANONICAL_HOST;
 
-	if (isSupported(requested)) {
-		event.cookies.set('locale', requested, {
-			path: '/',
-			httpOnly: true,
-			sameSite: 'lax',
-			maxAge: 60 * 60 * 24 * 365
+		if (needsLocaleRedirect) {
+			target.pathname = requestedLocale === 'en' ? '/en/' : '/';
+			target.searchParams.delete('lang');
+		}
+
+		return new Response(null, {
+			status: 308,
+			headers: { location: target.toString() }
 		});
 	}
+
+	event.locals.locale =
+		event.url.pathname === '/en' || event.url.pathname.startsWith('/en/')
+			? ('en' satisfies Locale)
+			: ('de' satisfies Locale);
 
 	return resolve(event, {
 		transformPageChunk: ({ html }) => html.replace('%lang%', event.locals.locale)
