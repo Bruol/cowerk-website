@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import type { SubmitFunction } from '@sveltejs/kit';
+	import { tick } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { translations, type Locale } from '$lib/i18n';
@@ -43,16 +46,97 @@
 		`<${'script'} type="application/ld+json">${JSON.stringify(structuredData).replaceAll('<', '\\u003c')}</${'script'}>`
 	);
 
-	const enhanceForm = () => {
-		return async ({
-			update
-		}: {
-			update: (options?: { reset?: boolean; invalidateAll?: boolean }) => Promise<void>;
-		}) => {
-			await update({ reset: false, invalidateAll: false });
+	type FormKind = 'trial' | 'contact';
+	let pending = $state({ trial: false, contact: false });
+	let results = $state<Partial<Record<FormKind, FormResult>>>({});
+	const feedback = (kind: FormKind) => results[kind] ?? (form?.form === kind ? form : undefined);
+	const sendingLabel = $derived(locale === 'en' ? 'Sending…' : 'Wird gesendet…');
+	const sentLabel = $derived(locale === 'en' ? 'Message sent!' : 'Nachricht gesendet!');
+	const sentDetail = $derived(
+		locale === 'en'
+			? 'Thank you! We’ll get back to you soon.'
+			: 'Danke! Wir melden uns bald bei dir.'
+	);
+	const enhanceForm =
+		(kind: FormKind): SubmitFunction =>
+		({ cancel, formElement }) => {
+			if (pending[kind] || feedback(kind)?.ok) {
+				cancel();
+				return;
+			}
+			pending[kind] = true;
+			results[kind] = {};
+			return async ({ result }) => {
+				try {
+					if (result.type === 'success' || result.type === 'failure') {
+						results[kind] = result.data as FormResult;
+					} else {
+						results[kind] = {
+							ok: false,
+							message:
+								locale === 'en'
+									? 'Sending failed. Please try again. Your message is still here.'
+									: 'Senden fehlgeschlagen. Bitte versuche es erneut. Deine Nachricht bleibt erhalten.'
+						};
+					}
+				} finally {
+					pending[kind] = false;
+				}
+				await tick();
+				formElement.querySelector<HTMLElement>('[data-feedback]')?.focus();
+			};
 		};
-	};
 </script>
+
+{#snippet formFeedback(kind: FormKind)}
+	<div aria-live="polite" aria-atomic="true">
+		{#if feedback(kind)?.ok}
+			<div
+				data-feedback
+				tabindex="-1"
+				class="mt-5 flex items-start gap-4 border-4 border-dark bg-secondary p-5 text-dark focus:outline-none"
+				in:fly={{
+					y: 8,
+					duration:
+						typeof window !== 'undefined' &&
+						window.matchMedia('(prefers-reduced-motion: reduce)').matches
+							? 0
+							: 200
+				}}
+			>
+				<span
+					aria-hidden="true"
+					class="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-dark text-2xl font-bold"
+					>✓</span
+				>
+				<div>
+					<p class="text-lg font-bold uppercase">{sentLabel}</p>
+					<p class="mt-1 text-sm leading-relaxed">{sentDetail}</p>
+				</div>
+			</div>
+		{:else if feedback(kind)?.message}
+			<p
+				data-feedback
+				tabindex="-1"
+				role="alert"
+				class="mt-4 border-2 border-red-700 bg-red-50 p-4 text-sm font-bold text-red-800"
+			>
+				{feedback(kind)?.message}
+			</p>
+		{/if}
+	</div>
+{/snippet}
+
+{#snippet submitLabel(kind: FormKind, label: string)}
+	{#if pending[kind]}
+		<span
+			aria-hidden="true"
+			class="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-dark border-t-transparent motion-reduce:animate-none"
+		></span>{sendingLabel}
+	{:else if feedback(kind)?.ok}
+		<span aria-hidden="true">✓ </span>{sentLabel}
+	{:else}{label}{/if}
+{/snippet}
 
 <svelte:head>
 	<title>{l.title}</title>
@@ -221,7 +305,8 @@
 				<form
 					method="POST"
 					action="?/trial"
-					use:enhance={enhanceForm}
+					use:enhance={enhanceForm('trial')}
+					aria-busy={pending.trial}
 					class="border-4 border-dark bg-surface p-6 md:p-8"
 				>
 					<div class="mb-6 border-b-2 border-dark pb-3 font-['Archivo_Black',sans-serif] text-2xl">
@@ -315,14 +400,11 @@
 					</div>
 					<button
 						type="submit"
-						class="mt-2 w-full cursor-pointer border-4 border-secondary bg-secondary px-6 py-4 font-['JetBrains_Mono',monospace] text-xs font-bold text-dark uppercase transition-colors hover:border-dark hover:bg-dark hover:text-cloud"
-						>{l.trialSubmit}</button
+						disabled={pending.trial || feedback('trial')?.ok}
+						class="mt-2 w-full cursor-pointer border-4 border-secondary bg-secondary px-6 py-4 font-['JetBrains_Mono',monospace] text-xs font-bold text-dark uppercase transition-colors hover:border-dark hover:bg-dark hover:text-cloud disabled:cursor-not-allowed disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-dark"
+						>{@render submitLabel('trial', l.trialSubmit)}</button
 					>
-					{#if form?.form === 'trial' && form.message}
-						<p class={`mt-3 text-center text-xs ${form.ok ? 'text-muted' : 'text-lemonade'}`}>
-							{form.message}
-						</p>
-					{/if}
+					{@render formFeedback('trial')}
 					<p class="mt-3 text-center text-xs text-muted">{l.trialConfirm}</p>
 				</form>
 			</div>
@@ -613,7 +695,8 @@
 			<form
 				method="POST"
 				action="?/contact"
-				use:enhance={enhanceForm}
+				use:enhance={enhanceForm('contact')}
+				aria-busy={pending.contact}
 				class="border-4 border-dark bg-surface p-6 md:mt-20 md:p-8"
 			>
 				<input class="hidden" type="text" name="website" tabindex="-1" autocomplete="off" />
@@ -655,6 +738,7 @@
 					>
 					<textarea
 						id="contact-message"
+						required
 						name="message"
 						rows="4"
 						placeholder="_____________"
@@ -663,14 +747,11 @@
 				</div>
 				<button
 					type="submit"
-					class="w-full cursor-pointer border-4 border-secondary bg-secondary px-6 py-4 font-['JetBrains_Mono',monospace] text-xs font-bold text-dark uppercase transition-colors hover:border-dark hover:bg-dark hover:text-cloud"
-					>{l.kontaktSubmit}</button
+					disabled={pending.contact || feedback('contact')?.ok}
+					class="w-full cursor-pointer border-4 border-secondary bg-secondary px-6 py-4 font-['JetBrains_Mono',monospace] text-xs font-bold text-dark uppercase transition-colors hover:border-dark hover:bg-dark hover:text-cloud disabled:cursor-not-allowed disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-dark"
+					>{@render submitLabel('contact', l.kontaktSubmit)}</button
 				>
-				{#if form?.form === 'contact' && form.message}
-					<p class={`mt-3 text-center text-xs ${form.ok ? 'text-muted' : 'text-lemonade'}`}>
-						{form.message}
-					</p>
-				{/if}
+				{@render formFeedback('contact')}
 			</form>
 		</div>
 	</section>
