@@ -6,6 +6,8 @@ declare global {
 		SMTP_PORT?: string;
 		SMTP_USER?: string;
 		SMTP_PASSWORD?: string;
+		SMTP_FROM?: string;
+		SMTP_TO?: string;
 		FORM_RATE_LIMITER: {
 			limit: (options: { key: string }) => Promise<{ success: boolean }>;
 		};

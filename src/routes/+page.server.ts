@@ -24,8 +24,8 @@ function getIp(request: Request, getClientAddress: () => string) {
 function getSmtpConfig(env: Env): SmtpConfig {
 	const username = env.SMTP_USER;
 	const password = env.SMTP_PASSWORD;
-	const from = username;
-	const to = from;
+	const from = env.SMTP_FROM ?? username;
+	const to = env.SMTP_TO ?? from;
 
 	if (!username || !password || !from || !to) {
 		throw new Error('Missing SMTP configuration');

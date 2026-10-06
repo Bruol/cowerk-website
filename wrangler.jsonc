@@ -34,7 +34,9 @@
 	"vars": {
 		"SMTP_HOST": "authsmtp.securemail.pro",
 		"SMTP_PORT": "465",
-		"SMTP_USER": "post@co-werk5.ch"
+		"SMTP_USER": "post@co-werk5.ch",
+		"SMTP_FROM": "post@co-werk5.ch",
+		"SMTP_TO": "post@co-werk5.ch"
 	},
 	"workers_dev": true,
 	"preview_urls": true
