@@ -10,7 +10,7 @@
 
 		init({
 			domain: 'co-werk5.ch',
-			endpoint: 'https://plausible.bruol.me/api/event'
+			endpoint: '/a/e'
 		});
 	});
 </script>
